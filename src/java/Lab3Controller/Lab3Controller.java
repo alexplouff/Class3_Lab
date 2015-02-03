@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Lab3Controller", urlPatterns = {"/lab3c"})
 public class Lab3Controller extends HttpServlet {
 
-    private static final String RESULT_PAGE = "lab3.jsp";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,26 +34,33 @@ public class Lab3Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                response.setContentType("text/html;charset=UTF-8");    
-          /*  
-        double length = new Double(request.getParameter(String.valueOf("length")));
-        double width = new Double(request.getParameter(String.valueOf("width")));
-        
-        TriangleAreaCalculator triangleArea = new TriangleAreaCalculator(length, width);
-        
-        request.setAttribute("triangleArea", triangleArea.toString());
-        */     
-        
-        double radius = new Double(request.getParameter(String.valueOf("radius")));
-        
-        CircleAreaCalculator circleArea = new CircleAreaCalculator(radius);
-        
-        request.setAttribute("circleArea", circleArea.toString());
-        
-        RequestDispatcher view = 
-                request.getRequestDispatcher(RESULT_PAGE);
+        response.setContentType("text/html;charset=UTF-8");
+
+        String RESULT_PAGE = "lab3.jsp";
+        String length = request.getParameter("length");
+        String width = request.getParameter("width");
+        String radius = request.getParameter("radius");
+
+        if (!(length == null || length.isEmpty()) && !(width == null || width.isEmpty())) {
+
+            double dlength = Double.valueOf(length);
+            double dwidth = Double.valueOf(width);
+
+            TriangleAreaCalculator triangleArea = new TriangleAreaCalculator(dlength,dwidth);
+
+            request.setAttribute("triangleArea", triangleArea.toString());
+
+        } else if (!(radius == null) || ( radius.isEmpty())) {
+            double dradius = Double.valueOf(radius);        
+            CircleAreaCalculator circleArea = new CircleAreaCalculator(dradius);
+
+            request.setAttribute("circleArea", circleArea.toString());
+        }
+
+        RequestDispatcher view
+                = request.getRequestDispatcher(RESULT_PAGE);
         view.forward(request, response);
-         
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

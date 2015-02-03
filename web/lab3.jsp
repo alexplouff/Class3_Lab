@@ -12,21 +12,30 @@
         <title>Lab 3</title>
     </head>
     <body>
-        <!--
+        
         <form id="triangleForm" name="form1" method="POST" action="lab3c">
         Enter the length:  <input type="text" id="length" name="length" /><br>
-        Enter the width:   <input type="text" id="width" name ="width" /><br>
-        <input type="submit" name="submit_lw" id="submit_lw" value="Calculate!" />
+        Enter the width:   <input type="text" id="width" name ="width"  /><br>
+        
+        <input type="submit" name="submit" id="submit" value="Calculate!" />
         </form><br><br>
-        <span id="triangleResult"> <%= request.getAttribute("triangleArea") %> </span>
-        -->
+        <% Object triangleArea = request.getAttribute("triangleArea"); 
+            String tArea = ";";
+            tArea = triangleArea != null ? triangleArea.toString() : "";
+           
+        %>
+        <span id="triangleResult"> <%= tArea %> </span>
         
-        <form id="cirlceForm" name="form1" method="POST" action="lab3c">
+        
+        <form id="cirlceForm" name="circleForm" method="POST" action="lab3c">
         Enter the radius:  <input type="text" id="radius" name="radius" /><br>
-        <input type="submit" name="submit_lw" id="submit_lw" value="Calculate!" />
+        <input type="submit" name="submit" id="submit" value="Calculate!" />
         </form>
-        
-        <span id="cirlceResult"><%= request.getAttribute("cricleArea") %></span>
+        <% Object circleArea = request.getAttribute("circleArea");
+            String cArea = "";
+            cArea = circleArea != null ? circleArea.toString() : "";
+        %>
+        <span id="circleResult"> <%= cArea %> </span>
         
     </body>
 </html>
