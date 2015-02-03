@@ -1,17 +1,20 @@
 <%-- 
-    Document   : lab3
-    Created on : Jan 29, 2015, 9:11:31 AM
+    Document   : lab4
+    Created on : Feb 3, 2015, 10:23:49 AM
     Author     : Alex
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <link rel="stylesheet"
+        <link rel="stylesheet"
 href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <title>Lab 3</title>
+        <title>Lab 4</title>
     </head>
     <body>
         
@@ -21,23 +24,14 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         
         <input type="submit" name="submit" id="submit" value="Calculate!" />
         </form><br><br>
-        <% Object triangleArea = request.getAttribute("triangleArea"); 
-            String tArea = ";";
-            tArea = triangleArea != null ? triangleArea.toString() : "";
-           
-        %>
-        <span id="triangleResult"> <%= tArea %> </span>
+        <span id="triangleResult"> ${triangleArea} </span>
         
         
         <form id="cirlceForm" name="circleForm" method="POST" action="lab3c">
         Enter the radius:  <input type="text" id="radius" name="radius" /><br>
         <input type="submit" name="submit" id="submit" value="Calculate!" />
         </form>
-        <% Object circleArea = request.getAttribute("circleArea");
-            String cArea = "";
-            cArea = circleArea != null ? circleArea.toString() : "";
-        %>
-        <span id="circleResult"> <%= cArea %> </span>
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <span id="circleResult"> ${circleArea} </span>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     </body>
 </html>
